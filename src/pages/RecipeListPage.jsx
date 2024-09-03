@@ -5,6 +5,7 @@ import { SearchBar } from "../components/SearchBar";
 import { RecipeCard } from "../components/RecipeCard";
 import { HealthFilter } from "../components/HealthFilter";
 import myImage from "../images/wincLogo1.png";
+import { ScrollToTopButton } from "../components/ScrollToTopButton";
 
 
 
@@ -88,6 +89,7 @@ export const RecipeListPage = ({ onSelectRecipe }) => {
           </Center>
         </VStack>
       </Center>
+      <ScrollToTopButton />
     </Box>
   );
 };
