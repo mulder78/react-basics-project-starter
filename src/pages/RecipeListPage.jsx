@@ -43,10 +43,9 @@ export const RecipeListPage = ({ onSelectRecipe }) => {
   });
 
   return (
-    <Box backgroundColor={"blue.400"} minH="100vh" p={6}>
-      <Center flexDir="column" p={6}>
-        <Image src={myImage} alt="winc logo" w={[100, 200]} />
-        
+    <Box backgroundColor={"blue.400"} minH="100vh" py={6}>
+      <Center flexDir="column" p={2}>
+        <Image src={myImage} alt="winc logo" w={[150, 200]} />
 
         {/* Zoekbalk en Filters */}
         <VStack mt={4} spacing={4} w="100%" maxW="1400px">
@@ -59,23 +58,33 @@ export const RecipeListPage = ({ onSelectRecipe }) => {
             onFilterChange={handleFilterChange}
           />
           <Center w="100%">
-            <Flex
-              mt={4}
-              w="100%"
-              maxW="1400px"
-              justifyContent="center"
-              flexWrap="wrap"
-              gap={5}
-            >
-              {filteredRecipes.map((hit) => (
-                <Box key={hit.recipe.label} maxW={["100%", "sm", "xs"]}>
-                  <RecipeCard
-                    recipe={hit.recipe}
-                    onSelect={() => onSelectRecipe(hit.recipe)}
-                  />
-                </Box>
-              ))}
-            </Flex>
+            {filteredRecipes.length === 0 ? (
+              <Box p={4} textAlign="center" color="white" fontSize="lg">
+                Geen recepten gevonden die voldoen aan de zoekcriteria.
+              </Box>
+            ) : (
+              <Flex
+                mt={4}
+                w="100%"
+                maxW="1400px"
+                justifyContent="center"
+                flexWrap="wrap"
+                gap={5}
+              >
+                {filteredRecipes.map((hit) => (
+                  <Box key={hit.recipe.label} maxW={["100%", "sm", "xs"]}>
+                    <RecipeCard
+                      key={hit.recipe.label}
+                      recipe={hit.recipe}
+                      onSelect={() => {
+                        onSelectRecipe(hit.recipe);
+                        window.scrollTo(0, 0); // Scroll naar boven bij selectie van een recept
+                      }}
+                    />
+                  </Box>
+                ))}
+              </Flex>
+            )}
           </Center>
         </VStack>
       </Center>

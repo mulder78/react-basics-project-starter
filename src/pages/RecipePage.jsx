@@ -18,7 +18,7 @@ export const RecipePage = ({ recipe, onBack }) => {
     <Flex
       bgColor={"blue.400"}
       minH="100vh"
-      p={6}
+      p={2}
       justifyContent={"center"}
       alignItems={"center"}
     >

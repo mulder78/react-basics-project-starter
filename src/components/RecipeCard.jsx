@@ -25,7 +25,7 @@ export const RecipeCard = ({ recipe, onSelect }) => {
         w="sm"
         objectFit="cover"
       />
-      <Flex flexDirection={"column"} alignItems={"center"} p="4" gap={2}>
+      <Flex flexDirection={"column"} alignItems={"center"} p="2" gap={2}>
         <Text>{recipe.mealType.join(", ")}</Text>
         <Heading textAlign={"center"} size={["sm", "md"]}>
           {recipe.label}
